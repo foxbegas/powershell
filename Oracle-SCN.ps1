@@ -7,15 +7,15 @@
 Clear-Host
 
 Write-Host "-----------------------------------------------------------------------------------------"
-Write-Host "###                             Diamant-Sicherungsarchiv                              ###"
+Write-Host "###                             Datenbank-Sicherungsarchiv                              ###"
 Write-Host "-----------------------------------------------------------------------------------------"
 Write-Host ""
-Write-Host "Verbindung zur FiBu-Datenbank wird hergestellt..."
+Write-Host "Verbindung zur Datenbank wird hergestellt..."
 
 # SSH-Verbindung zum DB-Host herstellen
 try
 {
-    $sshora = New-SSHSession -Computer fibu.jg.intranet -Credential oracle
+    $sshora = New-SSHSession -Computer oracledb.domain -Credential oracleuser
 }
 catch
 {
@@ -71,7 +71,7 @@ Write-Host "Abgemeldet: $ret0"
     #$rmanpw = Read-Host "Bitte das Kennwort für den User 'sys' eingeben" -AsSecureString
 
 #Invoke-SSHCommand -SSHSession $sshora -Command "hostname"
-#Invoke-SSHCommand -SSHSession $sshora -Command "rman target sys/$rmanpw@orcl"
+#Invoke-SSHCommand -SSHSession $sshora -Command "rman target sys/$rmanpw@oracleinstance"
 #Invoke-SSHCommand -SSHSession $sshora -Command "SELECT SEQUENCE#,NEXT_CHANGE#,NEXT_TIME FROM V$ARCHIVED_LOG ORDER BY NEXT_CHANGE# DESC FETCH FIRST 1 ROW ONLY;"
 #Invoke-SSHCommand -SSHSession $sshora -Command "exit"
 
